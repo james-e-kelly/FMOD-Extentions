@@ -835,7 +835,7 @@ namespace FMODExtenstions
                     UnityEngine.Debug.Log("FMOD Extensions: Destroying Programmer Sound");
                     RESULT resultTwo = RESULT.OK;
                     PROGRAMMER_SOUND_PROPERTIES properties = (PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(PROGRAMMER_SOUND_PROPERTIES));
-                    Sound destroyingSound = (Sound)Marshal.PtrToStructure(properties.sound, typeof(Sound));
+                    Sound destroyingSound = new Sound { handle = properties.sound };
 
                     result = destroyingSound.release();
                     Instance.CheckResult(resultTwo, "Sound.Release");
